@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/Users/tomoleary1/Documents/projects/quEST/QuEST/vqe/iam.c
+stdio.h
+-
+QuEST.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/vqe/QuEST.h
+
+QuEST/include/QuEST.h
+QuEST_precision.h
+QuEST/include/QuEST_precision.h
+
+QuEST/include/QuEST_precision.h
+math.h
+-
+
