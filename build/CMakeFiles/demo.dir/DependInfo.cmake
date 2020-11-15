@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_C
-  "/Users/tomoleary1/Documents/projects/quEST/QuEST/vqe/vqe.c" "/Users/tomoleary1/Documents/projects/quEST/QuEST/build/CMakeFiles/demo.dir/vqe/vqe.c.o"
+  "/Users/tomoleary1/Documents/projects/quEST/vqe/vqe.c" "/Users/tomoleary1/Documents/projects/quEST/build/CMakeFiles/demo.dir/vqe/vqe.c.o"
   )
 set(CMAKE_C_COMPILER_ID "AppleClang")
 
@@ -20,7 +20,7 @@ set(CMAKE_C_TARGET_INCLUDE_PATH
 
 # Targets to which this target links.
 set(CMAKE_TARGET_LINKED_INFO_FILES
-  "/Users/tomoleary1/Documents/projects/quEST/QuEST/build/QuEST/CMakeFiles/QuEST.dir/DependInfo.cmake"
+  "/Users/tomoleary1/Documents/projects/quEST/build/QuEST/CMakeFiles/QuEST.dir/DependInfo.cmake"
   )
 
 # Fortran module output directory.

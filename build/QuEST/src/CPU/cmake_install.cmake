@@ -1,4 +1,4 @@
-# Install script for directory: /Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU
+# Install script for directory: /Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)

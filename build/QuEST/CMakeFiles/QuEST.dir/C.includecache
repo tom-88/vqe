@@ -22,17 +22,17 @@ QuEST_precision.h
 
 ../QuEST/src/mt19937ar.h
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST_cpu.c
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST_cpu.c
 QuEST.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST.h
 QuEST_internal.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST_internal.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST_internal.h
 QuEST_precision.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST_precision.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST_precision.h
 mt19937ar.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/mt19937ar.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/mt19937ar.h
 QuEST_cpu_internal.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST_cpu_internal.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST_cpu_internal.h
 math.h
 -
 stdio.h
@@ -46,21 +46,21 @@ assert.h
 omp.h
 -
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST_cpu_internal.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST_cpu_internal.h
 QuEST_precision.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST_precision.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST_precision.h
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST_cpu_local.c
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST_cpu_local.c
 QuEST.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST.h
 QuEST_internal.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST_internal.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST_internal.h
 QuEST_precision.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST_precision.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST_precision.h
 mt19937ar.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/mt19937ar.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/mt19937ar.h
 QuEST_cpu_internal.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/CPU/QuEST_cpu_internal.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/CPU/QuEST_cpu_internal.h
 stdlib.h
 -
 stdio.h
@@ -74,35 +74,35 @@ sys/types.h
 omp.h
 -
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST.c
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST.c
 QuEST.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST.h
 QuEST_precision.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_precision.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_precision.h
 QuEST_internal.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_internal.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_internal.h
 QuEST_validation.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_validation.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_validation.h
 QuEST_qasm.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_qasm.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_qasm.h
 stdlib.h
 -
 string.h
 -
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_common.c
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_common.c
 QuEST.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST.h
 QuEST_internal.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_internal.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_internal.h
 QuEST_precision.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_precision.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_precision.h
 QuEST_validation.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_validation.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_validation.h
 QuEST_qasm.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_qasm.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_qasm.h
 mt19937ar.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/mt19937ar.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/mt19937ar.h
 Windows.h
 -
 io.h
@@ -120,21 +120,21 @@ stdio.h
 stdlib.h
 -
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_internal.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_internal.h
 QuEST.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST.h
 QuEST_precision.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_precision.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_precision.h
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_qasm.c
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_qasm.c
 QuEST.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST.h
 QuEST_precision.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_precision.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_precision.h
 QuEST_internal.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_internal.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_internal.h
 QuEST_qasm.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_qasm.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_qasm.h
 math.h
 -
 stdio.h
@@ -146,21 +146,21 @@ stdarg.h
 string.h
 -
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_qasm.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_qasm.h
 QuEST.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST.h
 QuEST_precision.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_precision.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_precision.h
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_validation.c
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_validation.c
 QuEST.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST.h
 QuEST_precision.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_precision.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_precision.h
 QuEST_internal.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_internal.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_internal.h
 QuEST_validation.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_validation.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_validation.h
 stdio.h
 -
 stdlib.h
@@ -168,15 +168,15 @@ stdlib.h
 stdint.h
 -
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST_validation.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST_validation.h
 QuEST.h
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/QuEST.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/QuEST.h
 stdio.h
 -
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/mt19937ar.c
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/mt19937ar.c
 stdio.h
 -
 
-/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src/mt19937ar.h
+/Users/tomoleary1/Documents/projects/quEST/QuEST/src/mt19937ar.h
 

@@ -67,10 +67,10 @@ RM = /usr/local/Cellar/cmake/3.18.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tomoleary1/Documents/projects/quEST/QuEST
+CMAKE_SOURCE_DIR = /Users/tomoleary1/Documents/projects/quEST
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tomoleary1/Documents/projects/quEST/QuEST/build
+CMAKE_BINARY_DIR = /Users/tomoleary1/Documents/projects/quEST/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -99,14 +99,14 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/QuEST/build/CMakeFiles /Users/tomoleary1/Documents/projects/quEST/QuEST/build/QuEST//CMakeFiles/progress.marks
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/QuEST/build/CMakeFiles 0
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/build/CMakeFiles /Users/tomoleary1/Documents/projects/quEST/build/QuEST//CMakeFiles/progress.marks
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
 clean:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/clean
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/clean
 .PHONY : clean
 
 # The main clean target
@@ -116,22 +116,22 @@ clean/fast: clean
 
 # Prepare targets for installation.
 preinstall: all
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/preinstall
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/preinstall
 .PHONY : preinstall
 
 # Prepare targets for installation.
 preinstall/fast:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/preinstall
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/preinstall
 .PHONY : preinstall/fast
 
 # clear depends
 depend:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 1
 .PHONY : depend
 
 # Convenience name for target.
 QuEST/CMakeFiles/QuEST.dir/rule:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/CMakeFiles/QuEST.dir/rule
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/CMakeFiles/QuEST.dir/rule
 .PHONY : QuEST/CMakeFiles/QuEST.dir/rule
 
 # Convenience name for target.
@@ -141,7 +141,7 @@ QuEST: QuEST/CMakeFiles/QuEST.dir/rule
 
 # fast build rule for target.
 QuEST/fast:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/build
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/build
 .PHONY : QuEST/fast
 
 src/CPU/QuEST_cpu.o: src/CPU/QuEST_cpu.c.o
@@ -150,7 +150,7 @@ src/CPU/QuEST_cpu.o: src/CPU/QuEST_cpu.c.o
 
 # target to build an object file
 src/CPU/QuEST_cpu.c.o:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu.c.o
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu.c.o
 .PHONY : src/CPU/QuEST_cpu.c.o
 
 src/CPU/QuEST_cpu.i: src/CPU/QuEST_cpu.c.i
@@ -159,7 +159,7 @@ src/CPU/QuEST_cpu.i: src/CPU/QuEST_cpu.c.i
 
 # target to preprocess a source file
 src/CPU/QuEST_cpu.c.i:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu.c.i
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu.c.i
 .PHONY : src/CPU/QuEST_cpu.c.i
 
 src/CPU/QuEST_cpu.s: src/CPU/QuEST_cpu.c.s
@@ -168,7 +168,7 @@ src/CPU/QuEST_cpu.s: src/CPU/QuEST_cpu.c.s
 
 # target to generate assembly for a file
 src/CPU/QuEST_cpu.c.s:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu.c.s
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu.c.s
 .PHONY : src/CPU/QuEST_cpu.c.s
 
 src/CPU/QuEST_cpu_local.o: src/CPU/QuEST_cpu_local.c.o
@@ -177,7 +177,7 @@ src/CPU/QuEST_cpu_local.o: src/CPU/QuEST_cpu_local.c.o
 
 # target to build an object file
 src/CPU/QuEST_cpu_local.c.o:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu_local.c.o
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu_local.c.o
 .PHONY : src/CPU/QuEST_cpu_local.c.o
 
 src/CPU/QuEST_cpu_local.i: src/CPU/QuEST_cpu_local.c.i
@@ -186,7 +186,7 @@ src/CPU/QuEST_cpu_local.i: src/CPU/QuEST_cpu_local.c.i
 
 # target to preprocess a source file
 src/CPU/QuEST_cpu_local.c.i:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu_local.c.i
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu_local.c.i
 .PHONY : src/CPU/QuEST_cpu_local.c.i
 
 src/CPU/QuEST_cpu_local.s: src/CPU/QuEST_cpu_local.c.s
@@ -195,7 +195,7 @@ src/CPU/QuEST_cpu_local.s: src/CPU/QuEST_cpu_local.c.s
 
 # target to generate assembly for a file
 src/CPU/QuEST_cpu_local.c.s:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu_local.c.s
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/CPU/QuEST_cpu_local.c.s
 .PHONY : src/CPU/QuEST_cpu_local.c.s
 
 src/QuEST.o: src/QuEST.c.o
@@ -204,7 +204,7 @@ src/QuEST.o: src/QuEST.c.o
 
 # target to build an object file
 src/QuEST.c.o:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST.c.o
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST.c.o
 .PHONY : src/QuEST.c.o
 
 src/QuEST.i: src/QuEST.c.i
@@ -213,7 +213,7 @@ src/QuEST.i: src/QuEST.c.i
 
 # target to preprocess a source file
 src/QuEST.c.i:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST.c.i
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST.c.i
 .PHONY : src/QuEST.c.i
 
 src/QuEST.s: src/QuEST.c.s
@@ -222,7 +222,7 @@ src/QuEST.s: src/QuEST.c.s
 
 # target to generate assembly for a file
 src/QuEST.c.s:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST.c.s
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST.c.s
 .PHONY : src/QuEST.c.s
 
 src/QuEST_common.o: src/QuEST_common.c.o
@@ -231,7 +231,7 @@ src/QuEST_common.o: src/QuEST_common.c.o
 
 # target to build an object file
 src/QuEST_common.c.o:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_common.c.o
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_common.c.o
 .PHONY : src/QuEST_common.c.o
 
 src/QuEST_common.i: src/QuEST_common.c.i
@@ -240,7 +240,7 @@ src/QuEST_common.i: src/QuEST_common.c.i
 
 # target to preprocess a source file
 src/QuEST_common.c.i:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_common.c.i
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_common.c.i
 .PHONY : src/QuEST_common.c.i
 
 src/QuEST_common.s: src/QuEST_common.c.s
@@ -249,7 +249,7 @@ src/QuEST_common.s: src/QuEST_common.c.s
 
 # target to generate assembly for a file
 src/QuEST_common.c.s:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_common.c.s
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_common.c.s
 .PHONY : src/QuEST_common.c.s
 
 src/QuEST_qasm.o: src/QuEST_qasm.c.o
@@ -258,7 +258,7 @@ src/QuEST_qasm.o: src/QuEST_qasm.c.o
 
 # target to build an object file
 src/QuEST_qasm.c.o:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_qasm.c.o
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_qasm.c.o
 .PHONY : src/QuEST_qasm.c.o
 
 src/QuEST_qasm.i: src/QuEST_qasm.c.i
@@ -267,7 +267,7 @@ src/QuEST_qasm.i: src/QuEST_qasm.c.i
 
 # target to preprocess a source file
 src/QuEST_qasm.c.i:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_qasm.c.i
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_qasm.c.i
 .PHONY : src/QuEST_qasm.c.i
 
 src/QuEST_qasm.s: src/QuEST_qasm.c.s
@@ -276,7 +276,7 @@ src/QuEST_qasm.s: src/QuEST_qasm.c.s
 
 # target to generate assembly for a file
 src/QuEST_qasm.c.s:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_qasm.c.s
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_qasm.c.s
 .PHONY : src/QuEST_qasm.c.s
 
 src/QuEST_validation.o: src/QuEST_validation.c.o
@@ -285,7 +285,7 @@ src/QuEST_validation.o: src/QuEST_validation.c.o
 
 # target to build an object file
 src/QuEST_validation.c.o:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_validation.c.o
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_validation.c.o
 .PHONY : src/QuEST_validation.c.o
 
 src/QuEST_validation.i: src/QuEST_validation.c.i
@@ -294,7 +294,7 @@ src/QuEST_validation.i: src/QuEST_validation.c.i
 
 # target to preprocess a source file
 src/QuEST_validation.c.i:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_validation.c.i
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_validation.c.i
 .PHONY : src/QuEST_validation.c.i
 
 src/QuEST_validation.s: src/QuEST_validation.c.s
@@ -303,7 +303,7 @@ src/QuEST_validation.s: src/QuEST_validation.c.s
 
 # target to generate assembly for a file
 src/QuEST_validation.c.s:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_validation.c.s
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/QuEST_validation.c.s
 .PHONY : src/QuEST_validation.c.s
 
 src/mt19937ar.o: src/mt19937ar.c.o
@@ -312,7 +312,7 @@ src/mt19937ar.o: src/mt19937ar.c.o
 
 # target to build an object file
 src/mt19937ar.c.o:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/mt19937ar.c.o
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/mt19937ar.c.o
 .PHONY : src/mt19937ar.c.o
 
 src/mt19937ar.i: src/mt19937ar.c.i
@@ -321,7 +321,7 @@ src/mt19937ar.i: src/mt19937ar.c.i
 
 # target to preprocess a source file
 src/mt19937ar.c.i:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/mt19937ar.c.i
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/mt19937ar.c.i
 .PHONY : src/mt19937ar.c.i
 
 src/mt19937ar.s: src/mt19937ar.c.s
@@ -330,7 +330,7 @@ src/mt19937ar.s: src/mt19937ar.c.s
 
 # target to generate assembly for a file
 src/mt19937ar.c.s:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/mt19937ar.c.s
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/src/mt19937ar.c.s
 .PHONY : src/mt19937ar.c.s
 
 # Help Target
@@ -374,6 +374,6 @@ help:
 # No rule that depends on this can have commands that come from listfiles
 # because they might be regenerated.
 cmake_check_build_system:
-	cd /Users/tomoleary1/Documents/projects/quEST/QuEST/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
+	cd /Users/tomoleary1/Documents/projects/quEST/build && $(CMAKE_COMMAND) -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR) --check-build-system CMakeFiles/Makefile.cmake 0
 .PHONY : cmake_check_build_system
 

@@ -4,7 +4,7 @@
 # compile C with /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/cc
 C_DEFINES = -DQuEST_EXPORTS -DQuEST_PREC=2
 
-C_INCLUDES = -I/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src -I/Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/include
+C_INCLUDES = -I/Users/tomoleary1/Documents/projects/quEST/QuEST/src -I/Users/tomoleary1/Documents/projects/quEST/QuEST/include
 
 C_FLAGS =      -std=c99         -O2 -fPIC
 

@@ -1,4 +1,4 @@
-# Install script for directory: /Users/tomoleary1/Documents/projects/quEST/QuEST/QuEST/src
+# Install script for directory: /Users/tomoleary1/Documents/projects/quEST/QuEST/src
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
@@ -39,7 +39,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/Users/tomoleary1/Documents/projects/quEST/QuEST/build/QuEST/src/CPU/cmake_install.cmake")
+  include("/Users/tomoleary1/Documents/projects/quEST/build/QuEST/src/CPU/cmake_install.cmake")
 
 endif()
 

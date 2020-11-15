@@ -63,10 +63,10 @@ RM = /usr/local/Cellar/cmake/3.18.0/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/tomoleary1/Documents/projects/quEST/QuEST
+CMAKE_SOURCE_DIR = /Users/tomoleary1/Documents/projects/quEST
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/tomoleary1/Documents/projects/quEST/QuEST/build
+CMAKE_BINARY_DIR = /Users/tomoleary1/Documents/projects/quEST/build
 
 #=============================================================================
 # Directory level rules for the build root directory
@@ -151,14 +151,14 @@ QuEST/src/CPU/clean:
 CMakeFiles/vqe.dir/all: QuEST/CMakeFiles/QuEST.dir/all
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vqe.dir/build.make CMakeFiles/vqe.dir/depend
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/vqe.dir/build.make CMakeFiles/vqe.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tomoleary1/Documents/projects/quEST/QuEST/build/CMakeFiles --progress-num=9,10 "Built target vqe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tomoleary1/Documents/projects/quEST/build/CMakeFiles --progress-num=9,10 "Built target vqe"
 .PHONY : CMakeFiles/vqe.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/vqe.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/QuEST/build/CMakeFiles 10
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/build/CMakeFiles 10
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 CMakeFiles/vqe.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/QuEST/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/build/CMakeFiles 0
 .PHONY : CMakeFiles/vqe.dir/rule
 
 # Convenience name for target.
@@ -178,14 +178,14 @@ CMakeFiles/vqe.dir/clean:
 QuEST/CMakeFiles/QuEST.dir/all:
 	$(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/depend
 	$(MAKE) $(MAKESILENT) -f QuEST/CMakeFiles/QuEST.dir/build.make QuEST/CMakeFiles/QuEST.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tomoleary1/Documents/projects/quEST/QuEST/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target QuEST"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/Users/tomoleary1/Documents/projects/quEST/build/CMakeFiles --progress-num=1,2,3,4,5,6,7,8 "Built target QuEST"
 .PHONY : QuEST/CMakeFiles/QuEST.dir/all
 
 # Build rule for subdir invocation for target.
 QuEST/CMakeFiles/QuEST.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/QuEST/build/CMakeFiles 8
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/build/CMakeFiles 8
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 QuEST/CMakeFiles/QuEST.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/QuEST/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/tomoleary1/Documents/projects/quEST/build/CMakeFiles 0
 .PHONY : QuEST/CMakeFiles/QuEST.dir/rule
 
 # Convenience name for target.
