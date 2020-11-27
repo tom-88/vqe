@@ -1,9 +1,3 @@
-/** @file 
- * A demo of QuEST
- *
- * @author Ania Brown
- * @author Tyson Jones
- */
 
 #include <stdio.h>
 #include "QuEST.h"
@@ -18,23 +12,8 @@ int measurementToEvalue(outcome){
     return 2*outcome - 1;
 }
 
-int main (int narg, char *varg[]) {
 
-    
-
-    /*
-     * PREPARE QuEST environment
-     * (Required only once per program)
-     */
-
-    QuESTEnv env = createQuESTEnv();
-
-    printf("-------------------------------------------------------\n");
-    printf("WOOOOOOOO its vqe:\n\t baby.\n");
-    printf("-------------------------------------------------------\n");
-
-
-
+int energyExpectation(){
     /*
      * PREPARE QUBIT SYSTEM
      */
@@ -137,10 +116,6 @@ int main (int narg, char *varg[]) {
      * SUM EXPECTATION VALUES OF SUB HAMILTONIAN TO GIVE ENERGY EXPECTATION
      */
     
-     /*
-      * PASS ENERGY EXPECTATION TO CLASSICAL OPTIMIZER
-      */
-
 
 
    
@@ -155,8 +130,37 @@ int main (int narg, char *varg[]) {
     destroyQureg(qubitsX, env); 
     destroyQureg(qubitsZ, env); 
 
+     /*
+      * PASS ENERGY EXPECTATION TO CLASSICAL OPTIMIZER
+      */
+
+    return 1;
 
 
+
+}
+
+int gradientDescent(){
+    int cost = energyExpectation();
+    
+    return cost;
+}
+int main (int narg, char *varg[]) {
+
+    
+
+    /*
+     * PREPARE QuEST environment
+     * (Required only once per program)
+     */
+
+    QuESTEnv env = createQuESTEnv();
+
+    printf("-------------------------------------------------------\n");
+    printf("WOOOOOOOO its vqe:\n\t baby.\n");
+    printf("-------------------------------------------------------\n");
+
+    int groundStateEnergyBound = gradientDescent();
     /*
      * CLOSE QUEST ENVIRONMET
      * (Required once at end of program)
