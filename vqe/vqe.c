@@ -3,6 +3,7 @@
 
 
 #include <stdio.h>
+#include <stlib.h>
 #include "QuEST.h"
 #include <QuEST_complex.h>
 
@@ -173,11 +174,38 @@ int gradientDescent(){
     qreal phi = 0;
     qreal lambda = 0;
 
+    int step_size = 0.1
+    int diff_step_size = 0.1;
+    int prev_cost = energyExpectation(theta, phi, lambda);
+    int current_cost = 0;
 
-    int cost = energyExpectation(theta, phi, lambda);
+    while (abs(current_cost - prev_cost) > 0.1){
+        theta = theta - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 1, diff_step_size)
+        phi = phi - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 2, diff_step_size)
+        lambda = lambda - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 3, diff_step_size)
+        prev_cost = current_cost
+        current_cost = energyExpectation(theta, phi, lambda)
+    }
+    
+    
     
     return cost;
 }
+
+int symmetricDiffQuotient(int(*cost)(void*, void*, void*),int x1,int x2, int x3, int target_param, int step){
+    if (target_param == 1){
+        return (cost(x1+step,x2,x3) - cost(x1-step,x2,x3)) / (2*step);
+    }
+    else if (target_param == 2){
+        return (cos(x1,x2+step,x3) - cost(x1,x2-step,x3)) / (2*step);
+    }
+    else{
+        return (cost(x1,x2,x3+step) - cost(x1,x2,x3-step)) / (2*step);
+    }
+}
+
+
+
 int main (int narg, char *varg[]) {
 
     env = createQuESTEnv();
