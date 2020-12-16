@@ -10,6 +10,14 @@
 QuEST_precision.h
 ../QuEST/include/QuEST_precision.h
 
+../QuEST/include/QuEST_complex.h
+cmath
+-
+complex
+-
+tgmath.h
+-
+
 ../QuEST/include/QuEST_precision.h
 math.h
 -
@@ -17,6 +25,10 @@ math.h
 /Users/tomoleary1/Documents/projects/quEST/vqe/vqe.c
 stdio.h
 -
+stdlib.h
+-
 QuEST.h
 /Users/tomoleary1/Documents/projects/quEST/vqe/QuEST.h
+QuEST_complex.h
+-
 

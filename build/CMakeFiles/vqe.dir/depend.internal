@@ -3,5 +3,6 @@
 
 CMakeFiles/vqe.dir/vqe/vqe.c.o
  ../QuEST/include/QuEST.h
+ ../QuEST/include/QuEST_complex.h
  ../QuEST/include/QuEST_precision.h
  /Users/tomoleary1/Documents/projects/quEST/vqe/vqe.c
