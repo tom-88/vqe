@@ -9,9 +9,9 @@
 
 int measurementToEvalue(int outcome);
 ComplexMatrix2 singleQubitVariationalForm(qreal theta, qreal phi, qreal lambda);
-int energyExpectation(qreal theta,qreal phi,qreal lambda);
-int gradientDescent();
-int symmetricDiffQuotient(int(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, qreal x3, int target_param, double step);
+double energyExpectation(qreal theta,qreal phi,qreal lambda);
+double gradientDescent();
+int symmetricDiffQuotient(double(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, qreal x3, int target_param, double step);
 
 
 
@@ -74,8 +74,9 @@ ComplexMatrix2 singleQubitVariationalForm(qreal theta, qreal phi, qreal lambda){
 }
  
 
-int energyExpectation(qreal theta,qreal phi,qreal lambda){
-   /*
+double energyExpectation(qreal theta,qreal phi,qreal lambda){
+    int measurementRepeats = 10;
+    /*
      * ANSATZ PARAMS 
      *
      */
@@ -89,85 +90,89 @@ int energyExpectation(qreal theta,qreal phi,qreal lambda){
      */ 
     ComplexMatrix2 u3 = singleQubitVariationalForm(theta, phi, lambda);
  
-     /*
-     * PREPARE QUBIT SYSTEM
-     */
-
-    Qureg qubitsZ = createQureg(1, env);
+    int outcomeZTotal = 0;
+    int outcomeXTotal = 0;
+    int outcomeYTotal = 0;
     
-    initZeroState(qubitsZ);
-    unitary(qubitsZ,0,u3);
+    for (int i = 0; i < measurementRepeats; i++){
+        /*
+        * PREPARE QUBIT SYSTEM
+        */
+
+        Qureg qubitsZ = createQureg(1, env);
+        
+        initZeroState(qubitsZ);
+        unitary(qubitsZ,0,u3);
+       
+        Qureg qubitsX = createQureg(1, env);
+        cloneQureg(qubitsX,qubitsZ); //copy circuit
+        Qureg qubitsY = createQureg(1, env);
+        cloneQureg(qubitsY, qubitsZ); //copy circuit
+     
+         /*
+         * REPORT SYSTEM AND ENVIRONMENT
+         */
+        reportQuregParams(qubitsZ);
+        reportQuregParams(qubitsX);
+        reportQuregParams(qubitsY);
+        reportQuESTEnv(env);
+
+        /*
+         * MEASUREMENTS : MEASURE EACH SUB HAMILTONIAN 
+         */
+
+        /*
+         * PAULI Z MEASUREMENTS : JUST MEASURE IN COMPUTATIONAL BASIS
+         */
+        int outcomeZ = measure(qubitsZ, 0);
+        printf("Qubit 0 was measured in state %d\n", outcomeZ);
+        printf("Qubit 0 output measurement as pauli z eigenvalue: %d\n", measurementToEvalue(outcomeZ));
+        outcomeZTotal = outcomeZTotal + measurementToEvalue(outcomeZ);
+        /*
+         * PAULI X MEASUREMENTS : ROTATE BASIS ABOUT Y AXIS BY -PI/2, MEASURE IN COMPUTATIONAL BASIS
+         */
+        rotateY(qubitsX,0,-1*M_PI/2);  
+        int outcomeX = measure(qubitsX, 0);
+        printf("Qubit 0 was measured in state %d\n", outcomeX);
+        printf("Qubit 0 output measurement as pauli x eigenvalue: %d\n", measurementToEvalue(outcomeX));
+        outcomeXTotal = outcomeXTotal + measurementToEvalue(outcomeX);
+
+        /*
+         * PAULI Y MEASUREMENTS : ROTATE BASIS ABOUT Y AXIS BY PI/2, MEASURE IN COMPUTATIONAL BASIS
+         */
+        rotateY(qubitsY,0,M_PI/2);  
+        int outcomeY = measure(qubitsY, 0);
+        printf("Qubit 0 was measured in state %d\n", outcomeZ);
+        printf("Qubit 0 output measurement as pauli y eigenvalue: %d\n", measurementToEvalue(outcomeZ));
+        outcomeYTotal = outcomeYTotal + measurementToEvalue(outcomeY);
+
+        
+        /*
+         * MULTIPLY / SUM PAULI MEASUREMENT OUTCOMES TO GET TERM EXPECTATION VALUE
+         */
+
+        /*
+         * SUM EXPECTATION VALUES OF SUB HAMILTONIAN TO GIVE ENERGY EXPECTATION
+         */
+    
+    
+    
+        /*
+         * FREE MEMORY
+         */
+
+        destroyQureg(qubitsY, env); 
+        destroyQureg(qubitsX, env); 
+        destroyQureg(qubitsZ, env); 
+
+
+    }
    
-    Qureg qubitsX = createQureg(1, env);
-    cloneQureg(qubitsX,qubitsZ); //copy circuit
-    Qureg qubitsY = createQureg(1, env);
-    cloneQureg(qubitsY, qubitsZ); //copy circuit
- 
-     /*
-     * REPORT SYSTEM AND ENVIRONMENT
-     */
-    reportQuregParams(qubitsZ);
-    reportQuregParams(qubitsX);
-    reportQuregParams(qubitsY);
-    reportQuESTEnv(env);
-
-    /*
-     * MEASUREMENTS : MEASURE EACH SUB HAMILTONIAN 
-     */
-
-    /*
-     * PAULI Z MEASUREMENTS : JUST MEASURE IN COMPUTATIONAL BASIS
-     */
-    int outcomeZ = measure(qubitsZ, 0);
-    printf("Qubit 0 was measured in state %d\n", outcomeZ);
-    printf("Qubit 0 output measurement as pauli z eigenvalue: %d\n", measurementToEvalue(outcomeZ));
-
-    /*
-     * PAULI X MEASUREMENTS : ROTATE BASIS ABOUT Y AXIS BY -PI/2, MEASURE IN COMPUTATIONAL BASIS
-     */
-    rotateY(qubitsX,0,-1*M_PI/2);  
-    int outcomeX = measure(qubitsX, 0);
-    printf("Qubit 0 was measured in state %d\n", outcomeX);
-    printf("Qubit 0 output measurement as pauli x eigenvalue: %d\n", measurementToEvalue(outcomeX));
-
-
-    /*
-     * PAULI Y MEASUREMENTS : ROTATE BASIS ABOUT Y AXIS BY PI/2, MEASURE IN COMPUTATIONAL BASIS
-     */
-    rotateY(qubitsY,0,M_PI/2);  
-    int outcomeY = measure(qubitsY, 0);
-    printf("Qubit 0 was measured in state %d\n", outcomeZ);
-    printf("Qubit 0 output measurement as pauli y eigenvalue: %d\n", measurementToEvalue(outcomeZ));
-
-
-    
-    /*
-     * MULTIPLY / SUM PAULI MEASUREMENT OUTCOMES TO GET TERM EXPECTATION VALUE
-     */
-
-    /*
-     * SUM EXPECTATION VALUES OF SUB HAMILTONIAN TO GIVE ENERGY EXPECTATION
-     */
-    
-
-
-   
-
-
-
-    /*
-     * FREE MEMORY
-     */
-
-    destroyQureg(qubitsY, env); 
-    destroyQureg(qubitsX, env); 
-    destroyQureg(qubitsZ, env); 
-
-     /*
+         /*
       * PASS ENERGY EXPECTATION TO CLASSICAL OPTIMIZER
       */
     
-    return measurementToEvalue(outcomeX) + measurementToEvalue(outcomeY) + measurementToEvalue(outcomeZ);
+    return (outcomeZTotal + outcomeXTotal + outcomeYTotal) / measurementRepeats;
 
 
 }
@@ -177,17 +182,17 @@ int energyExpectation(qreal theta,qreal phi,qreal lambda){
  * TODO: If possible, make this modular & generic for any function and a list of params
  */
 
-int gradientDescent(){
+double gradientDescent(){
     qreal theta = M_PI / 2;
     qreal phi = 0;
     qreal lambda = 0;
 
     double step_size = 0.1;
     double diff_step_size = 0.1;
-    int prev_cost = energyExpectation(theta, phi, lambda);
-    int current_cost = 0;
+    double prev_cost = energyExpectation(theta, phi, lambda);
+    double current_cost = 0;
 
-    while (abs(current_cost - prev_cost) > 0.1){
+    while (fabs(current_cost - prev_cost) > 0.1){
         theta = theta - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 1, diff_step_size);
         phi = phi - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 2, diff_step_size);
         lambda = lambda - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 3, diff_step_size);
@@ -200,7 +205,7 @@ int gradientDescent(){
     return current_cost;
 }
 
-int symmetricDiffQuotient(int(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, qreal x3, int target_param, double step){
+int symmetricDiffQuotient(double(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, qreal x3, int target_param, double step){
     if (target_param == 1){
         return (cost(x1+step,x2,x3) - cost(x1-step,x2,x3)) / (2*step);
     }
@@ -224,11 +229,11 @@ int main (int narg, char *varg[]) {
     printf("WOOOOOOOO its vqe:\n\t baby.\n");
     printf("-------------------------------------------------------\n");
 
-    int groundStateEnergyBound = gradientDescent();
+    double groundStateEnergyBound = gradientDescent();
     
 
       
-    printf("Ground state energy bound %d \n", groundStateEnergyBound);
+    printf("Ground state energy bound %f \n", groundStateEnergyBound);
     /*
      * CLOSE QUEST ENVIRONMET
      * (Required once at end of program)
