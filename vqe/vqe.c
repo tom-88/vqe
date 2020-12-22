@@ -1,7 +1,6 @@
 
 // TODO: assuming Hamiltonian is reduced 1 term pauli entries with consts, need a way of representing this so that measurements can be decided
 
-
 #include <stdio.h>
 #include <stdlib.h>
 #include "QuEST.h"
@@ -12,9 +11,6 @@ ComplexMatrix2 singleQubitVariationalForm(qreal theta, qreal phi, qreal lambda);
 double energyExpectation(qreal theta,qreal phi,qreal lambda);
 double gradientDescent();
 int symmetricDiffQuotient(double(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, qreal x3, int target_param, double step);
-
-
-
 
 /*
 * PREPARE QuEST environment
@@ -75,7 +71,7 @@ ComplexMatrix2 singleQubitVariationalForm(qreal theta, qreal phi, qreal lambda){
  
 
 double energyExpectation(qreal theta,qreal phi,qreal lambda){
-    int measurementRepeats = 10;
+    int measurementRepeats = 100;
     /*
      * ANSATZ PARAMS 
      *
@@ -146,7 +142,6 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
         printf("Qubit 0 output measurement as pauli y eigenvalue: %d\n", measurementToEvalue(outcomeZ));
         outcomeYTotal = outcomeYTotal + measurementToEvalue(outcomeY);
 
-        
         /*
          * MULTIPLY / SUM PAULI MEASUREMENT OUTCOMES TO GET TERM EXPECTATION VALUE
          */
@@ -155,8 +150,6 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
          * SUM EXPECTATION VALUES OF SUB HAMILTONIAN TO GIVE ENERGY EXPECTATION
          */
     
-    
-    
         /*
          * FREE MEMORY
          */
@@ -164,17 +157,12 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
         destroyQureg(qubitsY, env); 
         destroyQureg(qubitsX, env); 
         destroyQureg(qubitsZ, env); 
-
-
     }
-   
          /*
       * PASS ENERGY EXPECTATION TO CLASSICAL OPTIMIZER
       */
     
-    return (outcomeZTotal + outcomeXTotal + outcomeYTotal) / measurementRepeats;
-
-
+    return (outcomeZTotal + outcomeXTotal + outcomeYTotal) / (double)measurementRepeats;
 }
 
 /* Performs gradient descent with params for 1 qubit variational form
@@ -188,19 +176,17 @@ double gradientDescent(){
     qreal lambda = 0;
 
     double step_size = 0.1;
-    double diff_step_size = 0.1;
+    double diff_step_size = 0.0000001;
     double prev_cost = energyExpectation(theta, phi, lambda);
     double current_cost = 0;
 
-    while (fabs(current_cost - prev_cost) > 0.1){
+    while (fabs(current_cost - prev_cost) > 0.01){
         theta = theta - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 1, diff_step_size);
         phi = phi - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 2, diff_step_size);
         lambda = lambda - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 3, diff_step_size);
         prev_cost = current_cost;
         current_cost = energyExpectation(theta, phi, lambda);
     }
-    
-    
     
     return current_cost;
 }
@@ -218,12 +204,9 @@ int symmetricDiffQuotient(double(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, 
 }
 
 
-
 int main (int narg, char *varg[]) {
 
     env = createQuESTEnv();
-
-
 
     printf("-------------------------------------------------------\n");
     printf("WOOOOOOOO its vqe:\n\t baby.\n");
@@ -231,8 +214,6 @@ int main (int narg, char *varg[]) {
 
     double groundStateEnergyBound = gradientDescent();
     
-
-      
     printf("Ground state energy bound %f \n", groundStateEnergyBound);
     /*
      * CLOSE QUEST ENVIRONMET
