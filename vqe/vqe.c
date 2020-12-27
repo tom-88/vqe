@@ -71,12 +71,8 @@ ComplexMatrix2 singleQubitVariationalForm(qreal theta, qreal phi, qreal lambda){
  
 
 double energyExpectation(qreal theta,qreal phi,qreal lambda){
-    int measurementRepeats = 100;
-    /*
-     * ANSATZ PARAMS 
-     *
-     */
-   
+    int measurementRepeats = 1000;
+  
     /*
      * INITIAL STATE
      */
@@ -108,10 +104,10 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
          /*
          * REPORT SYSTEM AND ENVIRONMENT
          */
-        reportQuregParams(qubitsZ);
-        reportQuregParams(qubitsX);
-        reportQuregParams(qubitsY);
-        reportQuESTEnv(env);
+//        reportQuregParams(qubitsZ);
+//        reportQuregParams(qubitsX);
+//        reportQuregParams(qubitsY);
+//        reportQuESTEnv(env);
 
         /*
          * MEASUREMENTS : MEASURE EACH SUB HAMILTONIAN 
@@ -121,16 +117,16 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
          * PAULI Z MEASUREMENTS : JUST MEASURE IN COMPUTATIONAL BASIS
          */
         int outcomeZ = measure(qubitsZ, 0);
-        printf("Qubit 0 was measured in state %d\n", outcomeZ);
-        printf("Qubit 0 output measurement as pauli z eigenvalue: %d\n", measurementToEvalue(outcomeZ));
+ //       printf("Qubit 0 was measured in state %d\n", outcomeZ);
+ //       printf("Qubit 0 output measurement as pauli z eigenvalue: %d\n", measurementToEvalue(outcomeZ));
         outcomeZTotal = outcomeZTotal + measurementToEvalue(outcomeZ);
         /*
          * PAULI X MEASUREMENTS : ROTATE BASIS ABOUT Y AXIS BY -PI/2, MEASURE IN COMPUTATIONAL BASIS
          */
         rotateY(qubitsX,0,-1*M_PI/2);  
         int outcomeX = measure(qubitsX, 0);
-        printf("Qubit 0 was measured in state %d\n", outcomeX);
-        printf("Qubit 0 output measurement as pauli x eigenvalue: %d\n", measurementToEvalue(outcomeX));
+ //       printf("Qubit 0 was measured in state %d\n", outcomeX);
+ //       printf("Qubit 0 output measurement as pauli x eigenvalue: %d\n", measurementToEvalue(outcomeX));
         outcomeXTotal = outcomeXTotal + measurementToEvalue(outcomeX);
 
         /*
@@ -138,8 +134,8 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
          */
         rotateY(qubitsY,0,M_PI/2);  
         int outcomeY = measure(qubitsY, 0);
-        printf("Qubit 0 was measured in state %d\n", outcomeZ);
-        printf("Qubit 0 output measurement as pauli y eigenvalue: %d\n", measurementToEvalue(outcomeZ));
+ //       printf("Qubit 0 was measured in state %d\n", outcomeZ);
+ //       printf("Qubit 0 output measurement as pauli y eigenvalue: %d\n", measurementToEvalue(outcomeZ));
         outcomeYTotal = outcomeYTotal + measurementToEvalue(outcomeY);
 
         /*
@@ -171,22 +167,24 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
  */
 
 double gradientDescent(){
-    qreal theta = M_PI / 2;
+    qreal theta = 0;
     qreal phi = 0;
     qreal lambda = 0;
 
-    double step_size = 0.1;
-    double diff_step_size = 0.0000001;
-    double prev_cost = energyExpectation(theta, phi, lambda);
+    double step_size = 0.001;
+    double diff_step_size = 0.1;
+    double tolerance = 0.0001;
+    double prev_cost = 1000;
     double current_cost = 0;
-
-    while (fabs(current_cost - prev_cost) > 0.01){
+    
+    while(fabs(prev_cost-current_cost) > tolerance){
+        printf("cost : %f \n",current_cost);
         theta = theta - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 1, diff_step_size);
         phi = phi - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 2, diff_step_size);
         lambda = lambda - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 3, diff_step_size);
         prev_cost = current_cost;
         current_cost = energyExpectation(theta, phi, lambda);
-    }
+    }   
     
     return current_cost;
 }
