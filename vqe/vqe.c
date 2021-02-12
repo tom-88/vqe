@@ -10,8 +10,9 @@ int measurementToEvalue(int outcome);
 ComplexMatrix2 singleQubitVariationalForm(qreal theta, qreal phi, qreal lambda);
 double energyExpectation(qreal theta,qreal phi,qreal lambda);
 double gradientDescent();
-int symmetricDiffQuotient(double(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, qreal x3, int target_param, double step);
-
+double symmetricDiffQuotient(double(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, qreal x3, int target_param, qreal step);
+void testSymmetricDiffQuotient();
+double addUs(qreal x, qreal y, qreal z);
 /*
 * PREPARE QuEST environment
 * (Required only once per program)
@@ -101,17 +102,6 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
         Qureg qubitsY = createQureg(1, env);
         cloneQureg(qubitsY, qubitsZ); //copy circuit
      
-         /*
-         * REPORT SYSTEM AND ENVIRONMENT
-         */
-//        reportQuregParams(qubitsZ);
-//        reportQuregParams(qubitsX);
-//        reportQuregParams(qubitsY);
-//        reportQuESTEnv(env);
-
-        /*
-         * MEASUREMENTS : MEASURE EACH SUB HAMILTONIAN 
-         */
 
         /*
          * PAULI Z MEASUREMENTS : JUST MEASURE IN COMPUTATIONAL BASIS
@@ -130,9 +120,9 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
         outcomeXTotal = outcomeXTotal + measurementToEvalue(outcomeX);
 
         /*
-         * PAULI Y MEASUREMENTS : ROTATE BASIS ABOUT Y AXIS BY PI/2, MEASURE IN COMPUTATIONAL BASIS
+         * PAULI Y MEASUREMENTS : ROTATE BASIS ABOUT X AXIS BY PI/2, MEASURE IN COMPUTATIONAL BASIS
          */
-        rotateY(qubitsY,0,M_PI/2);  
+        rotateX(qubitsY,0,M_PI/2);  
         int outcomeY = measure(qubitsY, 0);
  //       printf("Qubit 0 was measured in state %d\n", outcomeZ);
  //       printf("Qubit 0 output measurement as pauli y eigenvalue: %d\n", measurementToEvalue(outcomeZ));
@@ -163,25 +153,31 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
 
 /* Performs gradient descent with params for 1 qubit variational form
  * 
+ * Exit condition : after the cost function stops changing by some amount
+ *
  * TODO: If possible, make this modular & generic for any function and a list of params
+ *
+ * could I derive the analytic derivative for the cost function of smaller Hamiltonians?
  */
 
-double gradientDescent(){
+double gradientDescentExitCondCostTolerance(){
     qreal theta = 0;
     qreal phi = 0;
     qreal lambda = 0;
 
     double step_size = 0.001;
-    double diff_step_size = 0.1;
+    double diff_step_size = 0.1; // how to set this, tends to derivative when this tends to 0, so as small as possible?
     double tolerance = 0.0001;
     double prev_cost = 1000;
     double current_cost = 0;
     
     while(fabs(prev_cost-current_cost) > tolerance){
         printf("cost : %f \n",current_cost);
-        theta = theta - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 1, diff_step_size);
-        phi = phi - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 2, diff_step_size);
-        lambda = lambda - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 3, diff_step_size);
+        double deriv = symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 0, diff_step_size);
+        printf("deriv : %f \n",deriv);
+        theta = theta - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 0, diff_step_size);
+        phi = phi - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 1, diff_step_size);
+        lambda = lambda - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 2, diff_step_size);
         prev_cost = current_cost;
         current_cost = energyExpectation(theta, phi, lambda);
     }   
@@ -189,11 +185,73 @@ double gradientDescent(){
     return current_cost;
 }
 
-int symmetricDiffQuotient(double(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, qreal x3, int target_param, double step){
-    if (target_param == 1){
+/* Performs gradient descent with params for 1 qubit variational form
+ * 
+ * Exit condition : after the gradient cost function stops changing by some amount
+ *
+ */
+
+double gradientDescentExitCondGradientTolerance(){
+    qreal theta = 0;
+    qreal phi = 0;
+    qreal lambda = 0;
+
+    double step_size = 0.001;
+    double diff_step_size = 0.1; 
+    double tolerance = 0.0001;
+    double prev_cost_gradient = 1000;
+    double current_cost_gradient = 0;
+    
+    while(fabs(prev_cost_gradient-current_cost_gradient) > tolerance){
+        double deriv_param_0 = symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 0, diff_step_size);
+        double deriv_param_1 = symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 1, diff_step_size);
+        double deriv_param_2 = symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 2, diff_step_size);
+        
+        theta = theta - step_size*deriv_param_0;
+        phi = phi - step_size*deriv_param_1;
+        lambda = lambda - step_size*deriv_param_2;
+        
+        prev_cost_gradient = current_cost_gradient;
+        current_cost_gradient = deriv_param_0 + deriv_param_1 + deriv_param_2;   
+    }
+
+    return energyExpectation(theta, phi, lambda);
+}
+
+/* Performs gradient descent with params for 1 qubit variational form
+ * exit condition : after some fixed number of iterations
+ */
+double gradientDescentExitCondIterations(){
+    qreal theta = 0;
+    qreal phi = 0;
+    qreal lambda = 0;
+
+    double step_size = 0.001;
+    double diff_step_size = 0.1; // how to set this, tends to derivative when this tends to 0, so as small as possible?
+    int max_it = 10000;
+    int i = 0;
+    double prev_cost = 1000;
+    double current_cost = 0;
+    
+    while(i < max_it){
+        printf("%i, ",i);
+        double deriv = symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 0, diff_step_size);
+        theta = theta - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 0, diff_step_size);
+        phi = phi - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 1, diff_step_size);
+        lambda = lambda - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 2, diff_step_size);
+        prev_cost = current_cost;
+        current_cost = energyExpectation(theta, phi, lambda);
+        i++;
+    }   
+    
+    return current_cost;
+}
+
+double symmetricDiffQuotient(double(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, qreal x3, int target_param, qreal step){
+    if (target_param == 0){
         return (cost(x1+step,x2,x3) - cost(x1-step,x2,x3)) / (2*step);
     }
-    else if (target_param == 2){
+    else if (target_param == 1){
         return (cost(x1,x2+step,x3) - cost(x1,x2-step,x3)) / (2*step);
     }
     else{
@@ -201,17 +259,36 @@ int symmetricDiffQuotient(double(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, 
     }
 }
 
+void testSymmetricDiffQuotient(){
+    qreal x = 2;
+    qreal y = 3;
+    qreal z = 4 ;
+
+    double analyticResultDerivFByX = 4;
+    double numericalResultDerivFByX = symmetricDiffQuotient(addUs,x,y,z,0,10.0);
+
+    printf("Analytic result = %f \n",analyticResultDerivFByX);
+    printf("Numerical result = %f \n",numericalResultDerivFByX);
+}
+
+// deriv of this is 1 + the other two variables
+double addUs(qreal x, qreal y, qreal z){
+    return (x*x)+y+z;
+}
+
 
 int main (int narg, char *varg[]) {
-
+    testSymmetricDiffQuotient();
+    
     env = createQuESTEnv();
 
     printf("-------------------------------------------------------\n");
     printf("WOOOOOOOO its vqe:\n\t baby.\n");
     printf("-------------------------------------------------------\n");
 
-    double groundStateEnergyBound = gradientDescent();
+    double groundStateEnergyBound = gradientDescentExitCondIterations();
     
+    printf("Expected ground state energy : -1.73205...");
     printf("Ground state energy bound %f \n", groundStateEnergyBound);
     /*
      * CLOSE QUEST ENVIRONMET
