@@ -13,6 +13,25 @@ double gradientDescent();
 double symmetricDiffQuotient(double(*cost)(qreal, qreal, qreal),qreal x1,qreal x2, qreal x3, int target_param, qreal step);
 void testSymmetricDiffQuotient();
 double addUs(qreal x, qreal y, qreal z);
+void hamBuilderTest();
+
+int numTerms = 2;
+struct Hamiltonian {
+    // single qubit terms X, Y, Z, I, acting on a single qubit could do Xs = [true,false,true...] for [X_0, X_1,X_2...] same for Ys, Zs
+    // double qubit terms combinations of Paulis acting on 2 qubits
+    // triple qubit terms
+    // ...
+    // need to represent coefficients as well
+   int numQubits;
+   char termStrings[numTerms]; // is this kind of definition allowed? like this.numTerms? Hamiltonian.numTerms? can't possibly work?
+   char coeffs[numTerms];
+};
+
+
+
+
+
+
 /*
 * PREPARE QuEST environment
 * (Required only once per program)
@@ -87,7 +106,7 @@ double energyExpectation(qreal theta,qreal phi,qreal lambda){
     int outcomeXTotal = 0;
     int outcomeYTotal = 0;
     
-    for (int i = 0; i < measurementRepeats; i++){
+    for (int i = 0; i < measurementRepeats; i++){ // these measurements are for known 3 term Ham, need to generalise to any Ham
         /*
         * PREPARE QUBIT SYSTEM
         */
@@ -166,7 +185,7 @@ double gradientDescentExitCondCostTolerance(){
     qreal lambda = 0;
 
     double step_size = 0.001;
-    double diff_step_size = 0.1; // how to set this, tends to derivative when this tends to 0, so as small as possible?
+    double diff_step_size = 0.1; // how to set this, tends to derivative when this tends to 0, so as small as possible? what's the trade off?
     double tolerance = 0.0001;
     double prev_cost = 1000;
     double current_cost = 0;
@@ -228,14 +247,13 @@ double gradientDescentExitCondIterations(){
 
     double step_size = 0.001;
     double diff_step_size = 0.1; // how to set this, tends to derivative when this tends to 0, so as small as possible?
-    int max_it = 10000;
+    int max_it = 1000;
     int i = 0;
     double prev_cost = 1000;
     double current_cost = 0;
     
     while(i < max_it){
         printf("%i, ",i);
-        double deriv = symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 0, diff_step_size);
         theta = theta - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 0, diff_step_size);
         phi = phi - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 1, diff_step_size);
         lambda = lambda - step_size*symmetricDiffQuotient(energyExpectation, theta, phi, lambda, 2, diff_step_size);
@@ -276,8 +294,25 @@ double addUs(qreal x, qreal y, qreal z){
     return (x*x)+y+z;
 }
 
+void hamBuilderTest(){
+    struct Hamiltonian ham;
+    ham.numQubits = 2;
+//   ham.numTerms = 2;
+    ham.termStrings = {"X", "XY"}
+    ham.coeffs = {1, 0.5}
+    
+    printf("ham.numQubits = %d\n", ham.numQubits);
+  //  printf("ham.numTerms = %d\n", ham.numTerms);
+    for (int i = 0 ; i < numTerms; i++){
+        printf("ham.termStrings %s\n= ", ham.termStrings[i]);
+        printf("ham.coeffs = %s\n", ham.coeffs[i]);
+    }
+}
+
 
 int main (int narg, char *varg[]) {
+    hamBuilderTest();
+
     testSymmetricDiffQuotient();
     
     env = createQuESTEnv();
@@ -291,7 +326,7 @@ int main (int narg, char *varg[]) {
     printf("Expected ground state energy : -1.73205...");
     printf("Ground state energy bound %f \n", groundStateEnergyBound);
     /*
-     * CLOSE QUEST ENVIRONMET
+     * CLOSE QUEST ENVIRONMENT
      * (Required once at end of program)
      */
     destroyQuESTEnv(env);
